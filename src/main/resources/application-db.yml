@@ -1,0 +1,29 @@
+spring:
+  # ====== PostgreSQL ======
+  config:
+    jasypt:
+      path: classpath:/jasypt.yml
+      encryptor:
+        bean: jasyptEncryptor
+
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: none
+        show_sql: true #console
+        format_sql: true
+        use_sql_comments: true
+        order_inserts: true
+        order_updates: true
+        highlight_sql: true
+        naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+  datasource:
+    url: jdbc:postgresql://172.25.42.1:5441/corown?currentSchema=corown
+    username: ENC(PTWUVC6hclgWtJok4DF9mig56I70vMb+IxEPtXoyFu13SXoyLEdeXFZTrTG5kwXj)
+    password: ENC(hpeauV9iyT+mtlneLPkmZipCRF9NExGDoxEGuNIPUXrB+sdqw9Y6WrHvooUKw/ju)
+    driver-class-name: org.postgresql.Driver
+    pool-name: 'read-write-corown'
+    sqlserver-dialect: 'org.hibernate.dialect.PostgreSQLDialect'
+    ddl-auto: 'validate'

@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    include:
+      - ${server.mode:batch}
+      - db
+  application:
+    name: webTest
+
+server:
+  port: 8081
+
+
