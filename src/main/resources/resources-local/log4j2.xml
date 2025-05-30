@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="INFO">
+<Configuration status="INFO" monitorInterval="30">
+    <Properties>
+        <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight{[%-5level]} [%t] [%X{userId}] %logger{36} - %msg%n</Property>
+        <Property name="LOG_FILE_PATH">logs/app.log</Property>
+        <Property name="LOG_FILE_PATTERN">logs/app-%d{yyyy-MM-dd}.log</Property>
+    </Properties>
+
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d{HH:mm:ss.SSS}] [%t] %-5level %logger{36} - %msg%n" />
+            <PatternLayout disableAnsi="false" pattern="${LOG_PATTERN}" />
         </Console>
+
+        <RollingFile name="FileLogger" fileName="${LOG_FILE_PATH}"
+                     filePattern="${LOG_FILE_PATTERN}">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
     </Appenders>
+
     <Loggers>
-        <Root level="INFO">
+        <Logger name="org.springframework" level="INFO" />
+        <Logger name="org.hibernate.SQL" level="DEBUG" />
+        <Logger name="org.hibernate.type.descriptor.sql" level="TRACE" />
+
+        <Root level="DEBUG">
             <AppenderRef ref="Console" />
+            <AppenderRef ref="FileLogger" />
         </Root>
     </Loggers>
 </Configuration>
