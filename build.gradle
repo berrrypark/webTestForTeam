@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.5.0'
+    id 'org.springframework.boot' version '3.2.5'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -24,13 +24,36 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    // db : postgre
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.postgresql:postgresql:42.7.4'
 
-    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4'
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.4' // jasypt
+
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0' // swagger
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.1' // sql log formatting
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2' // log4j
+
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
+def profile = project.hasProperty("profile") ? project.property("profile").toString() : "local"
+
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["src/main/resources", "src/main/resources/resources-${profile}"]
+        }
+    }
 }
 
 tasks.named('test') {

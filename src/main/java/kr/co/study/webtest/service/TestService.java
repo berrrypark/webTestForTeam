@@ -1,4 +1,4 @@
-package kr.co.study.webtest.dto;
+package kr.co.study.webtest.service;
 
 import kr.co.study.webtest.entity.Test;
 import kr.co.study.webtest.mapper.TestRepository;

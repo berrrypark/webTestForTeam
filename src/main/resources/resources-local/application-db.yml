@@ -10,8 +10,8 @@ spring:
     properties:
       hibernate:
         ddl-auto: none
-        show_sql: true #console
-        format_sql: true
+        show_sql: false
+        format_sql: false
         use_sql_comments: true
         order_inserts: true
         order_updates: true
@@ -27,3 +27,8 @@ spring:
     pool-name: 'read-write-corown'
     sqlserver-dialect: 'org.hibernate.dialect.PostgreSQLDialect'
     ddl-auto: 'validate'
+
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true

@@ -1,0 +1,21 @@
+spring:
+  profiles:
+    include:
+      - ${server.mode:batch}
+      - db
+  application:
+    name: webTest
+
+server:
+  port: 8081
+
+logging:
+  level:
+    root: info
+    kr.co.study: debug
+
+springdoc:
+  paths-to-match:
+    - /api/**
+  swagger-ui:
+    path: /swagger-ui.html
