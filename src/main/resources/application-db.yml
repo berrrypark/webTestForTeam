@@ -21,8 +21,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://172.25.42.1:5441/corown?currentSchema=corown
-    username: ENC(PTWUVC6hclgWtJok4DF9mig56I70vMb+IxEPtXoyFu13SXoyLEdeXFZTrTG5kwXj)
-    password: ENC(hpeauV9iyT+mtlneLPkmZipCRF9NExGDoxEGuNIPUXrB+sdqw9Y6WrHvooUKw/ju)
+    username: ENC(EZ0YI3gjy+xozEx/MciBsfOt9GzgnA6tw7Wm5FB9FnOgj/8hSpGG0aSjpWJVry/l)
+    password: ENC(lD26XU0bDVXOJHiwYNQwT06GUWY5yHy1zw5YpeCNViDRRh65ZNvfgg4WSaYuKc/o)
     driver-class-name: org.postgresql.Driver
     pool-name: 'read-write-corown'
     sqlserver-dialect: 'org.hibernate.dialect.PostgreSQLDialect'

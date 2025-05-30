@@ -3,12 +3,12 @@ package kr.co.study.webtest.util.crypto;
 import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 import org.jasypt.encryption.pbe.config.SimpleStringPBEConfig;
 
-public class JasyptDecryptTest {
+public class JasyptEncryptorTest {
 
     public static void main(String[] args) {
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
 
-        config.setPassword("비밀번호");
+        config.setPassword("비밀번호"); // jasypt.yml
         config.setAlgorithm("PBEWithHMACSHA512AndAES_256");
         config.setKeyObtentionIterations("1000");
         config.setPoolSize("1");
@@ -20,8 +20,8 @@ public class JasyptDecryptTest {
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
         encryptor.setConfig(config);
 
-        String decryptedUsername = encryptor.decrypt("EZ0YI3gjy+xozEx/MciBsfOt9GzgnA6tw7Wm5FB9FnOgj/8hSpGG0aSjpWJVry/l");
-        String decryptedPassword = encryptor.decrypt("lD26XU0bDVXOJHiwYNQwT06GUWY5yHy1zw5YpeCNViDRRh65ZNvfgg4WSaYuKc/o");
+        String decryptedUsername = encryptor.encrypt("bep");
+        String decryptedPassword = encryptor.encrypt("bep1!");
 
         System.out.println("✅ username: " + decryptedUsername);
         System.out.println("✅ password: " + decryptedPassword);
